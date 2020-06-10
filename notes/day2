@@ -1,0 +1,23 @@
+explore(g, path_so_far):
+    processing the first node
+    explore(the rest of the graph, copy of pah plus current node)
+
+def foo(a,b,c):
+    pass
+
+
+foo(1,2)
+foo(3,4)
+
+--------
+
+#default paramaters
+def baz(a, b=[]) <--causes problem
+
+pattern
+def baz(a, b=None):
+    if b is None:
+        b=[]
+
+    pass
+
