@@ -1,5 +1,6 @@
 ## Description
 
+
 You are provided with a pre-generated graph consisting of 500 rooms. You are responsible for filling `traversal_path` with directions that, when walked in order, will visit every room on the map at least once.
 
 Open `adv.py`. There are four parts to the provided code:
@@ -59,9 +60,21 @@ My best path is 957 moves. Can you find a shorter path?
 
 
 ## Rubric
-| OBJECTIVE | TASK | 1 - DOES NOT MEET Expectations | 2 - MEETS Expectations | 3 - EXCEEDS Expectations | SCORE |
-| ---------- | ----- | ------- | ------- | ------- | -- |
-| _Student can demonstrate applied knowledge of Graph Theory by traversing a large map_ | Complete traversal of a large Graph | Student unable to produce a valid traversal path of 2000 moves or less | Student is able to produce a valid traversal path between 960 and 2000 | Student produces a valid traversal path of 959 moves or less |  |
-| **FINAL SCORE** | | **0-1** | **2** | **3** |  |
+| OBJECTIVE                                                                             | TASK                                | 1 - DOES NOT MEET Expectations                                         | 2 - MEETS Expectations                                                 | 3 - EXCEEDS Expectations                                     | SCORE |
+| ------------------------------------------------------------------------------------- | ----------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------ | ----- |
+| _Student can demonstrate applied knowledge of Graph Theory by traversing a large map_ | Complete traversal of a large Graph | Student unable to produce a valid traversal path of 2000 moves or less | Student is able to produce a valid traversal path between 960 and 2000 | Student produces a valid traversal path of 959 moves or less |       |
+| **FINAL SCORE**                                                                       |                                     | **0-1**                                                                | **2**                                                                  | **3**                                                        |       |
+
+
+
+=======
+
+#given a graph, vertices and edges
+traverse the whole graph 
+  #twist -> record instructions for player to move one room at a time
+  
+  *traversal you come to a dead end
+    *they jump all over the place
+    HARD** you need a way to walk backwards from the where you currently are (find data structure)
 
 
