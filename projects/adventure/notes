@@ -1,0 +1,22 @@
+
+
+graph ={
+    0: [(3,1), {'n':1}],
+    1: [(3,2, {'i':1, 'n':2} )]
+    2: [(3,5), {'n': 1} ]
+}
+
+graph[roomid] = list contains dictionary and the reference number to the current roomid
+
+re
+
+return current room id 
+    player current room id
+
+return current room exit 
+    player curent room 
+
+move player in visited path
+path
+
+player travel path
