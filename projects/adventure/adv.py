@@ -59,9 +59,12 @@ def bfs_populate_map(starting_room_id):
                 q.enqueue(new_path)
 
 
-def dft_search(starting_room):
+def dfs_search(starting_room):
+    # opp_dirctions = {}
+    # opp_dirctions = {'n': 's', 's': 'n', 'e': 'w', 'w': 'e'}
     opp_dirctions = {'n': 's', 's': 'n', 'e': 'w', 'w': 'e'}
-    rooms = 0
+
+    count = 0  # initial value to room couner
 
     while len(graphCache) != len(room_graph):
         current_room = player.current_room
@@ -69,57 +72,55 @@ def dft_search(starting_room):
 
         # add full data into the room
         room_data = {}
-
+        exit_room = list()
         if room_id not in graphCache:
             for id in current_room.get_exits():
                 room_data[id] = "?"
 
+            graphCache[room_id] = room_data
+
             # update room
             if traversal_path:
                 room_previous = opp_dirctions[traversal_path[-1]]
-                room_data[room_previous] = rooms
-
-            graphCache[room_id] = room_data
+                # add that to the room counter
+                room_data[room_previous] = count
 
         else:
             room_data = graphCache[room_id]
 
-        possible_exits = list()
-
         for direction in room_data:
             if room_data[direction] == "?":
-                possible_exits.append(direction)
+                exit_room.append(direction)
 
-        if len(possible_exits) != 0:
-            random.shuffle(possible_exits)
+        if len(exit_room) is not 0:
+            random.shuffle(exit_room)
+            # set the direction to the possible exits in the first positon
 
-            direction = possible_exits[0]
+            direction = exit_room[0]
 
             traversal_path.append(direction)
-
+            # part that player moves
             player.travel(direction)
-
             room_move = player.current_room
-
-            graphCache[current_room.id][direction] = room_data.id
+            graphCache[current_room.id][direction] = room_move.id
 
         else:
+            # search by room id
             next_room = bfs_populate_map(room_id)
 
             if next_room is not None and len(next_room) > 0:
+                # loop room to gain access to the room's id
                 for i in range(len(next_room)-1):
+                    # loop to access direction
                     for direction in graphCache[next_room[i]]:
-                        if graphCache[next_room[i][direction] == next_room[i+1]]:
+                        if graphCache[next_room[i]][direction] == next_room[i+1]:
                             traversal_path.append(direction)
-                            player.travel(direction)
-        # else:
-        #     break
+                            player.travel(direction)  # player is moving
+            # else:
+            #     break
 
 
-dft_search(room_graph)
-print('graph cache-->', graphCache)
-print('traversal ', traversal_path)
-
+dfs_search(room_graph)
 
 # TRAVERSAL TEST
 visited_rooms = set()
@@ -131,17 +132,16 @@ for move in traversal_path:
     visited_rooms.add(player.current_room)
 
 if len(visited_rooms) == len(room_graph):
-    print("hello")
-    # print(
-    #     f"TESTS PASSED: {len(traversal_path)} moves, {len(visited_rooms)} rooms visited")
+    print(
+        f"TESTS PASSED: {len(traversal_path)} moves, {len(visited_rooms)} rooms visited")
 else:
     print("TESTS FAILED: INCOMPLETE TRAVERSAL")
-    # print(f"{len(room_graph) - len(visited_rooms)} unvisited rooms")
-    print('hello thee')
+    print(f"{len(room_graph) - len(visited_rooms)} unvisited rooms")
 
-######
+
+#####
 # UNCOMMENT TO WALK AROUND
-######
+#####
 player.current_room.print_room_description(player)
 while True:
     cmds = input("-> ").lower().split(" ")

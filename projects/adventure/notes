@@ -1,26 +1,33 @@
+1. Util file with Stacks and Queue 
+2. Will be using BFS since we a searching for the shortest path. 
+
+3. Graph should be structured as a dictionary. 
+
+current room id => finding an id fo the room the player is in currently
+
+when there's stuff in the Queue
+grab the available path
+set the curent room the last path's index
+mark current room as visited
 
 
-I will start out  with the smallest map to make sure my traversal works
-im thinking of having a util file with queue and stack available
-maybe a traversal BFS as we don't have anything we are actively seeking out
-possible game plan:
-    1) populate graph by traversing through all the rooms
-    2) keep track of rooms with directions
-    3) call populate graph function (populate_graph())
-    4) when length of visited is less than number of rooms:
-        - find a path
-        - traverse the returned list of moves
-        -update current room
+*for each direction in the map's current room
+create a new path to append to the direction
+
+functionality to explore all rooms until exit path is found
+
+*while there's something in the cache 
+show where we are with the id ->
+
+traversal path has to include where we were and our path
+
+GOAL: under 2000 steps
 
 
 
 
 
-graph ={
-    0: [(3,1), {'n':1}],
-    1: [(3,2, {'i':1, 'n':2} )]
-    2: [(3,5), {'n': 1} ]
-}
+take 2
 
 graph[roomid] = list contains dictionary and the reference number to the current roomid
 
