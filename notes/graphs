@@ -1,0 +1,136 @@
+Nodes == Verts == Vertices === Vertexes
+
+    The thing that stores the data
+
+
+Nodes connected by Edges 
+    edges can be unidirectional
+
+If a graph has a directional edges, its called a "directed graph".
+
+* singly linked list and doubly linked list are graphs
+
+linkedlist arent allowed to loop back on themselves
+
+if loop, and you need to print the value once, you need to flag its
+    ##look for the head and see if its where you started
+        #still wont solve it
+    ## couner
+        #keep a check
+    # do a traversal here do a check if its already been visited. 
+    #have a hashtable that can show where you've been visited
+
+    -------
+    a hash table that just stores TRUE/FALSE values is equivalent to a Set
+
+
+    Traversals
+    ------------
+
+    keep trakc of which nodes
+        *visited flag
+        *hash table
+        * set
+
+..........
+
+Starting at C
+
+Visited: C                  Stack: B, G<-top of Stack
+Visited C,G                 Stack: B, H <-top of Stack
+Visited C,G,H               Stack: G, A <- top of stack
+Visited: C, G, H, A         Stack: B, B, D <-top of stack
+Visited: C, G, H,A,D
+Visited: C,G,H,A,D,B        Stack:B,E,F<-top of Stack
+Visited: C,G,H,A,D,B,F      Stack:B, E
+Visited: C,G,H,A,D,B,F,E    Stack: B <-already in stack, becomses [empty]
+
+is the stack empty?
+No, do the traversal
+    keep going until its empty
+
+    .... in recursion when there's no neighbor it returns NON
+
+    depth-first-traversal -> orientation doesnt actually matter
+                ==>pop value of stack, mark it as visited, pushing neighbors off into the stack, continue...
+
+
+Deph-First Traversals 
+----------------------
+Push starting node on stack => can be used with recursion
+
+while stack isnt empty:
+    pop the node off the top of the stack => last in first out
+    if node isnt visited:
+        visit the node (do whatever it is we're going to do with this... print it..etc)
+        push all its neighbors on the stack // 2 way street is handled here
+
+
+Breadth First Traversals
+-------------------------
+*order doesnt matter
+*Find shorter path between the two nodes 
+
+Lets follow this as far down we can 
+
+Add starting node to queue => first in first out
+Exploring at a center point and going outward like a rippl effect
+
+
+while stack isnt empty
+    take the node from the front of the queue
+    if node isnt visited:
+    visit the nodemark it as Visited (ex. print it out)
+    add all its neighbors to the queue
+
+How to store in memory
+-----------------------
+  ||
+  ||
+  \/
+Graph Representations
+--------------------
+
+1. Adjencency matrix
+2. Adjencency list
+
+A matrix is a grid
+
+example from guided lecture
+ A B C D E F G H  < to
+A  T   T       T
+B T   T
+C  T         T
+D
+E
+F
+G     T
+H T
+^
+from
+
+o(n) just to get a list of neighgbors
+memory/space o(n^2)
+
+
+List:
+----------------
+
+A [B H D]
+B [C A F E]
+C [B G]
+D [A]
+E [B]
+F [B]
+G [C H]
+H [G A]
+
+----------------
+
+
+Breadth First Search
+*Shortest Way from one node to another (shorter path)
+
+Visit 1 node to another keep track from where you came from
+
+

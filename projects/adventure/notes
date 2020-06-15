@@ -1,0 +1,45 @@
+1. Util file with Stacks and Queue 
+2. Will be using BFS since we a searching for the shortest path. 
+
+3. Graph should be structured as a dictionary. 
+
+current room id => finding an id fo the room the player is in currently
+
+when there's stuff in the Queue
+grab the available path
+set the curent room the last path's index
+mark current room as visited
+
+
+*for each direction in the map's current room
+create a new path to append to the direction
+
+functionality to explore all rooms until exit path is found
+
+*while there's something in the cache 
+show where we are with the id ->
+
+traversal path has to include where we were and our path
+
+GOAL: under 2000 steps
+
+
+
+
+
+take 2
+
+graph[roomid] = list contains dictionary and the reference number to the current roomid
+
+re
+
+return current room id 
+    player current room id
+
+return current room exit 
+    player curent room 
+
+move player in visited path
+path
+
+player travel path
